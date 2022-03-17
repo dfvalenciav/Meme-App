@@ -9,11 +9,22 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var pickerCamera: UIBarButtonItem!
+    @IBOutlet weak var pickerGallery: UIBarButtonItem!
+    @IBOutlet weak var memeImage: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func pickerCameraAction(_ sender: Any) {
+       
+    }
+    
+    @IBAction func pickerGalleryAction(_ sender: Any) {
+        let pickerController = UIImagePickerController()
+        present(pickerController, animated: true, completion: nil)
+    }
 }
 
