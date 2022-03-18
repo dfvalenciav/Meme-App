@@ -35,13 +35,13 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kyI-0J-Qpc">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZCc-Ae-ahY">
-                                <rect key="frame" x="150" y="74" width="114" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZCc-Ae-ahY">
+                                <rect key="frame" x="191" y="74" width="32" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dk5-Li-tcT">
-                                <rect key="frame" x="150" y="749" width="114" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dk5-Li-tcT">
+                                <rect key="frame" x="191" y="749" width="32" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
@@ -49,25 +49,25 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Dk5-Li-tcT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4Sz-QJ-IkL"/>
                             <constraint firstItem="kyI-0J-Qpc" firstAttribute="leading" secondItem="vHj-h6-gca" secondAttribute="leading" id="4V0-qT-NzZ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZCc-Ae-ahY" secondAttribute="trailing" constant="150" id="5vi-kf-3Wz"/>
+                            <constraint firstItem="ZCc-Ae-ahY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BiL-d4-YUt"/>
                             <constraint firstItem="vHj-h6-gca" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="IV9-Zb-my9"/>
                             <constraint firstItem="vHj-h6-gca" firstAttribute="top" secondItem="kyI-0J-Qpc" secondAttribute="bottom" id="PfD-Ga-9Xk"/>
                             <constraint firstItem="ZCc-Ae-ahY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="UJW-Mc-M0T"/>
-                            <constraint firstItem="ZCc-Ae-ahY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="150" id="d4Y-1e-AOQ"/>
                             <constraint firstItem="kyI-0J-Qpc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eht-Cm-15e"/>
                             <constraint firstItem="vHj-h6-gca" firstAttribute="top" secondItem="Dk5-Li-tcT" secondAttribute="bottom" constant="30" id="hjM-QA-apy"/>
                             <constraint firstItem="kyI-0J-Qpc" firstAttribute="trailing" secondItem="vHj-h6-gca" secondAttribute="trailing" id="ilI-Uu-A3Z"/>
                             <constraint firstItem="kyI-0J-Qpc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jZO-Oa-Dir"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kyI-0J-Qpc" secondAttribute="trailing" id="jpA-tH-o4g"/>
-                            <constraint firstItem="Dk5-Li-tcT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="150" id="lm6-c4-Mow"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Dk5-Li-tcT" secondAttribute="trailing" constant="150" id="u0c-SY-7qs"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomTextField" destination="Dk5-Li-tcT" id="mkl-oA-6hN"/>
                         <outlet property="memeImage" destination="kyI-0J-Qpc" id="9tE-u7-yz8"/>
                         <outlet property="pickerCamera" destination="Gr3-V1-Ta4" id="RG9-OK-goe"/>
                         <outlet property="pickerGallery" destination="zvR-Oq-iw6" id="9MA-tj-eAC"/>
+                        <outlet property="topTextField" destination="ZCc-Ae-ahY" id="jHc-Su-qOO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

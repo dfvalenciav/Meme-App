@@ -9,13 +9,28 @@ import UIKit
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
 
+    //MARK - MULTIMEDIA OBJECTCS
     @IBOutlet weak var pickerCamera: UIBarButtonItem!
     @IBOutlet weak var pickerGallery: UIBarButtonItem!
     @IBOutlet weak var memeImage: UIImageView!
     
+    //MARK - TEXTFIELD OBJECTS
+    @IBOutlet weak var topTextField: UITextField!
+    @IBOutlet weak var bottomTextField: UITextField!
+    let memeTextAttributes: [NSAttributedString.Key: Any] = [
+        NSAttributedString.Key.strokeColor: UIColor.black,
+        NSAttributedString.Key.foregroundColor: UIColor.white,
+        NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+        NSAttributedString.Key.strokeWidth: -3.0,
+    ]
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        topTextField.defaultTextAttributes = memeTextAttributes
+        bottomTextField.defaultTextAttributes = memeTextAttributes
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
     }
     
     override func viewWillAppear(_ animated: Bool) {
