@@ -21,7 +21,7 @@
                                 <items>
                                     <barButtonItem title="Item" image="camera" catalog="system" width="218.5" id="Gr3-V1-Ta4">
                                         <connections>
-                                            <action selector="pickerCameraAction:" destination="BYZ-38-t0r" id="Bjf-9V-2wo"/>
+                                            <action selector="pickerCameraAction:" destination="BYZ-38-t0r" id="nkR-qz-txw"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem title="Album" width="93.5" id="zvR-Oq-iw6">
@@ -35,17 +35,33 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kyI-0J-Qpc">
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                             </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZCc-Ae-ahY">
+                                <rect key="frame" x="150" y="74" width="114" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dk5-Li-tcT">
+                                <rect key="frame" x="150" y="749" width="114" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="kyI-0J-Qpc" firstAttribute="leading" secondItem="vHj-h6-gca" secondAttribute="leading" id="4V0-qT-NzZ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ZCc-Ae-ahY" secondAttribute="trailing" constant="150" id="5vi-kf-3Wz"/>
                             <constraint firstItem="vHj-h6-gca" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="IV9-Zb-my9"/>
                             <constraint firstItem="vHj-h6-gca" firstAttribute="top" secondItem="kyI-0J-Qpc" secondAttribute="bottom" id="PfD-Ga-9Xk"/>
+                            <constraint firstItem="ZCc-Ae-ahY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="UJW-Mc-M0T"/>
+                            <constraint firstItem="ZCc-Ae-ahY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="150" id="d4Y-1e-AOQ"/>
                             <constraint firstItem="kyI-0J-Qpc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eht-Cm-15e"/>
+                            <constraint firstItem="vHj-h6-gca" firstAttribute="top" secondItem="Dk5-Li-tcT" secondAttribute="bottom" constant="30" id="hjM-QA-apy"/>
                             <constraint firstItem="kyI-0J-Qpc" firstAttribute="trailing" secondItem="vHj-h6-gca" secondAttribute="trailing" id="ilI-Uu-A3Z"/>
                             <constraint firstItem="kyI-0J-Qpc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jZO-Oa-Dir"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kyI-0J-Qpc" secondAttribute="trailing" id="jpA-tH-o4g"/>
+                            <constraint firstItem="Dk5-Li-tcT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="150" id="lm6-c4-Mow"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Dk5-Li-tcT" secondAttribute="trailing" constant="150" id="u0c-SY-7qs"/>
                         </constraints>
                     </view>
                     <connections>

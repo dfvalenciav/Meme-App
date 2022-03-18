@@ -17,16 +17,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-    @IBAction func pickerCameraAction(_ sender: Any) {
-       
-    }
     
+    override func viewWillAppear(_ animated: Bool) {
+        pickerCamera.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+    }
+
+
     @IBAction func pickerGalleryAction(_ sender: Any) {
         let pickerController = UIImagePickerController()
         pickerController.sourceType = .photoLibrary
         pickerController.delegate = self
         present(pickerController, animated: true, completion: nil)
+    }
+    
+    
+    @IBAction func pickerCameraAction(_ sender: Any) {
+        let pickerController1 = UIImagePickerController()
+        pickerController1.sourceType = .camera
+        pickerController1.delegate = self
+        present(pickerController1, animated: true, completion: nil)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -36,8 +45,5 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         picker.dismiss(animated: true, completion: nil)
     }
     
-   /* func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        <#code#>
-    }*/
 }
 
