@@ -13,10 +13,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     @IBOutlet weak var pickerCamera: UIBarButtonItem!
     @IBOutlet weak var pickerGallery: UIBarButtonItem!
     @IBOutlet weak var memeImage: UIImageView!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
+    @IBOutlet weak var toolBarBottom: UIToolbar!
+    @IBOutlet weak var toolBarTop: UIToolbar!
     
     //MARK - TEXTFIELD OBJECTS
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.black,
         NSAttributedString.Key.foregroundColor: UIColor.white,
@@ -31,6 +35,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         bottomTextField.defaultTextAttributes = memeTextAttributes
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
+        shareButton.isEnabled = false
         subscribeToKeyboardNotifications()
     }
     
@@ -72,6 +77,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         pickerController.sourceType = .photoLibrary
         pickerController.delegate = self
         present(pickerController, animated: true, completion: nil)
+        shareButton.isEnabled = true
     }
     
     
@@ -80,6 +86,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         pickerController1.sourceType = .camera
         pickerController1.delegate = self
         present(pickerController1, animated: true, completion: nil)
+        shareButton.isEnabled = true
+    }
+    
+    @IBAction func shareButtonAction(_ sender: Any) {
+        let shareImage = generateMemedImage()
+        let nextController = UIActivityViewController (activityItems : [shareImage],applicationActivities : nil)
+        self.present (nextController, animated: true, completion: nil)
+        nextController.completionWithItemsHandler = {
+            (activity, success, items, error) in self.save()
+        }
+    }
+    
+    func save () {
+        let topTextFieldString : String = topTextField.text!
+        let bottomTextFieldString : String = bottomTextField.text!
+        let meme = Meme(
+            topText:topTextFieldString,
+            bottomText: bottomTextFieldString,
+            originalImage: self.memeImage.image!, memedImage: generateMemedImage())
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -89,5 +114,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         picker.dismiss(animated: true, completion: nil)
     }
     
+    
+    func generateMemedImage() -> UIImage {
+        // hidden toolbar and navbar before render
+        self.tabBarController?.tabBar.isHidden = true
+        self.navigationController?.navigationBar.isHidden = true
+        toolBarTop.isHidden = true
+        toolBarBottom.isHidden = true
+        
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        
+        // showing toolbar and navbar after render
+        self.tabBarController?.tabBar.isHidden = false
+        self.navigationController?.navigationBar.isHidden = false
+        toolBarTop.isHidden = false
+        toolBarBottom.isHidden = false
+        return memedImage
+    }
+    
+
+    
 }
+
 
