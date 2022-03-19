@@ -31,10 +31,39 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         bottomTextField.defaultTextAttributes = memeTextAttributes
         topTextField.text = "TOP"
         bottomTextField.text = "BOTTOM"
+        subscribeToKeyboardNotifications()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         pickerCamera.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications()
+    }
+    
+    func subscribeToKeyboardNotifications() {
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+
+    func unsubscribeFromKeyboardNotifications() {
+
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification:Notification) {
+
+        view.frame.origin.y -= getKeyboardHeight(notification)
+    }
+
+    func getKeyboardHeight(_ notification:Notification) -> CGFloat {
+
+        let userInfo = notification.userInfo
+        let keyboardSize = userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue // of CGRect
+        return keyboardSize.cgRectValue.height
     }
 
 

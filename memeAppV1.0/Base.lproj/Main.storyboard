@@ -16,8 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vHj-h6-gca">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vHj-h6-gca">
+                                <rect key="frame" x="0.0" y="818" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="rQE-zJ-fB3"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem title="Item" image="camera" catalog="system" width="218.5" id="Gr3-V1-Ta4">
                                         <connections>
@@ -32,16 +35,16 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kyI-0J-Qpc">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="nusr-1" translatesAutoresizingMaskIntoConstraints="NO" id="kyI-0J-Qpc">
+                                <rect key="frame" x="0.0" y="44" width="414" height="774"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZCc-Ae-ahY">
-                                <rect key="frame" x="191" y="74" width="32" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dkn-pY-AY4">
+                                <rect key="frame" x="193" y="64" width="28" height="18.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dk5-Li-tcT">
-                                <rect key="frame" x="191" y="749" width="32" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wkt-bw-zZj">
+                                <rect key="frame" x="177" y="779.5" width="60" height="18.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
@@ -49,25 +52,25 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Dk5-Li-tcT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4Sz-QJ-IkL"/>
-                            <constraint firstItem="kyI-0J-Qpc" firstAttribute="leading" secondItem="vHj-h6-gca" secondAttribute="leading" id="4V0-qT-NzZ"/>
-                            <constraint firstItem="ZCc-Ae-ahY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="BiL-d4-YUt"/>
-                            <constraint firstItem="vHj-h6-gca" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="IV9-Zb-my9"/>
-                            <constraint firstItem="vHj-h6-gca" firstAttribute="top" secondItem="kyI-0J-Qpc" secondAttribute="bottom" id="PfD-Ga-9Xk"/>
-                            <constraint firstItem="ZCc-Ae-ahY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="UJW-Mc-M0T"/>
-                            <constraint firstItem="kyI-0J-Qpc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eht-Cm-15e"/>
-                            <constraint firstItem="vHj-h6-gca" firstAttribute="top" secondItem="Dk5-Li-tcT" secondAttribute="bottom" constant="30" id="hjM-QA-apy"/>
-                            <constraint firstItem="kyI-0J-Qpc" firstAttribute="trailing" secondItem="vHj-h6-gca" secondAttribute="trailing" id="ilI-Uu-A3Z"/>
-                            <constraint firstItem="kyI-0J-Qpc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jZO-Oa-Dir"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kyI-0J-Qpc" secondAttribute="trailing" id="jpA-tH-o4g"/>
+                            <constraint firstItem="vHj-h6-gca" firstAttribute="top" secondItem="kyI-0J-Qpc" secondAttribute="bottom" id="5N9-lT-Aw3"/>
+                            <constraint firstItem="kyI-0J-Qpc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6mM-ok-Uq4"/>
+                            <constraint firstItem="Wkt-bw-zZj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7rv-Om-9MM"/>
+                            <constraint firstItem="dkn-pY-AY4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="8sd-uM-5Qr"/>
+                            <constraint firstItem="kyI-0J-Qpc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Aah-Yj-JoA"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kyI-0J-Qpc" secondAttribute="trailing" id="XgZ-zg-rl2"/>
+                            <constraint firstItem="vHj-h6-gca" firstAttribute="top" secondItem="Wkt-bw-zZj" secondAttribute="bottom" constant="20" id="b3r-nB-KKN"/>
+                            <constraint firstItem="vHj-h6-gca" firstAttribute="trailing" secondItem="kyI-0J-Qpc" secondAttribute="trailing" id="bkF-e4-c1f"/>
+                            <constraint firstItem="dkn-pY-AY4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nfW-WP-Ygr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vHj-h6-gca" secondAttribute="bottom" id="oWs-vK-EBa"/>
+                            <constraint firstItem="vHj-h6-gca" firstAttribute="leading" secondItem="kyI-0J-Qpc" secondAttribute="leading" id="xav-wp-kL8"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bottomTextField" destination="Dk5-Li-tcT" id="mkl-oA-6hN"/>
+                        <outlet property="bottomTextField" destination="Wkt-bw-zZj" id="fI2-WK-JPy"/>
                         <outlet property="memeImage" destination="kyI-0J-Qpc" id="9tE-u7-yz8"/>
                         <outlet property="pickerCamera" destination="Gr3-V1-Ta4" id="RG9-OK-goe"/>
                         <outlet property="pickerGallery" destination="zvR-Oq-iw6" id="9MA-tj-eAC"/>
-                        <outlet property="topTextField" destination="ZCc-Ae-ahY" id="jHc-Su-qOO"/>
+                        <outlet property="topTextField" destination="dkn-pY-AY4" id="TBi-yD-BCj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -77,6 +80,7 @@
     </scenes>
     <resources>
         <image name="camera" catalog="system" width="128" height="94"/>
+        <image name="nusr-1" width="376" height="418"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
