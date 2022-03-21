@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate & UITextFieldDelegate {
 
     //MARK - MULTIMEDIA OBJECTCS
     @IBOutlet weak var pickerCamera: UIBarButtonItem!
@@ -21,6 +21,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     
+
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.black,
         NSAttributedString.Key.foregroundColor: UIColor.white,
@@ -28,13 +29,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         NSAttributedString.Key.strokeWidth: -3.0,
     ]
     
+    func prepareTextField(textField: UITextField, defaultText: String) {
+        textField.text = defaultText
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.delegate = self
+        textField.textAlignment = .center
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        topTextField.defaultTextAttributes = memeTextAttributes
-        bottomTextField.defaultTextAttributes = memeTextAttributes
-        topTextField.text = "TOP"
-        bottomTextField.text = "BOTTOM"
+        prepareTextField(textField: topTextField, defaultText: "TOP")
+        prepareTextField(textField: bottomTextField, defaultText: "BOTTOM")
         shareButton.isEnabled = false
         subscribeToKeyboardNotifications()
     }
@@ -50,18 +56,26 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
     }
     
     func subscribeToKeyboardNotifications() {
-
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-    }
-
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        }
+        
     func unsubscribeFromKeyboardNotifications() {
-
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-    }
+            NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        }
     
     @objc func keyboardWillShow(_ notification:Notification) {
-
-        view.frame.origin.y -= getKeyboardHeight(notification)
+        if bottomTextField.isFirstResponder{
+            view.frame.origin.y -= getKeyboardHeight(notification)
+        }
+        
+    }
+    
+    @objc func keyboardWillHide(_notification: Notification) {
+        if bottomTextField.isEditing, view.frame.origin.y != 0 {
+            view.frame.origin.y = 0
+        }
     }
 
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
@@ -73,20 +87,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
 
 
     @IBAction func pickerGalleryAction(_ sender: Any) {
+        pickImage(sourceType: .photoLibrary)
+    }
+    
+    @IBAction func pickerCameraAction(_ sender: Any) {
+        pickImage(sourceType: .camera)
+    }
+    
+    func pickImage (sourceType : UIImagePickerController.SourceType) {
         let pickerController = UIImagePickerController()
-        pickerController.sourceType = .photoLibrary
+        pickerController.sourceType = sourceType
         pickerController.delegate = self
         present(pickerController, animated: true, completion: nil)
         shareButton.isEnabled = true
     }
     
-    
-    @IBAction func pickerCameraAction(_ sender: Any) {
-        let pickerController1 = UIImagePickerController()
-        pickerController1.sourceType = .camera
-        pickerController1.delegate = self
-        present(pickerController1, animated: true, completion: nil)
-        shareButton.isEnabled = true
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
     
     @IBAction func shareButtonAction(_ sender: Any) {
@@ -94,14 +112,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate & UINavi
         let nextController = UIActivityViewController (activityItems : [shareImage],applicationActivities : nil)
         self.present (nextController, animated: true, completion: nil)
         nextController.completionWithItemsHandler = {
-            (activity, success, items, error) in self.save()
+            (activity, success, items, error) in
+            if success {self.save()}
         }
     }
     
     func save () {
         let topTextFieldString : String = topTextField.text!
         let bottomTextFieldString : String = bottomTextField.text!
-        let meme = Meme(
+        _ = Meme(
             topText:topTextFieldString,
             bottomText: bottomTextFieldString,
             originalImage: self.memeImage.image!, memedImage: generateMemedImage())

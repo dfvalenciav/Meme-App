@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Edit Meme View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="memeAppV1_0" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="EditMemeViewController" customModule="memeAppV1_0" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,14 +46,9 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" image="nusr-1" translatesAutoresizingMaskIntoConstraints="NO" id="kyI-0J-Qpc">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" image="nusr-1" translatesAutoresizingMaskIntoConstraints="NO" id="kyI-0J-Qpc">
                                 <rect key="frame" x="0.0" y="44" width="414" height="774"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wkt-bw-zZj">
-                                <rect key="frame" x="177" y="779.5" width="60" height="18.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k83-0S-XGV">
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
@@ -83,6 +78,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wkt-bw-zZj">
+                                <rect key="frame" x="177" y="779.5" width="60" height="18.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -91,11 +91,11 @@
                             <constraint firstItem="kyI-0J-Qpc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6mM-ok-Uq4"/>
                             <constraint firstItem="Wkt-bw-zZj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7rv-Om-9MM"/>
                             <constraint firstItem="kyI-0J-Qpc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Aah-Yj-JoA"/>
+                            <constraint firstItem="vHj-h6-gca" firstAttribute="top" secondItem="Wkt-bw-zZj" secondAttribute="bottom" constant="20" id="E52-PI-p82"/>
                             <constraint firstItem="dkn-pY-AY4" firstAttribute="top" secondItem="k83-0S-XGV" secondAttribute="bottom" constant="20" id="Fze-K0-5rW"/>
                             <constraint firstItem="k83-0S-XGV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="M0I-lp-d9Y"/>
                             <constraint firstItem="k83-0S-XGV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="O5M-vQ-4Ib"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kyI-0J-Qpc" secondAttribute="trailing" id="XgZ-zg-rl2"/>
-                            <constraint firstItem="vHj-h6-gca" firstAttribute="top" secondItem="Wkt-bw-zZj" secondAttribute="bottom" constant="20" id="b3r-nB-KKN"/>
                             <constraint firstItem="vHj-h6-gca" firstAttribute="trailing" secondItem="kyI-0J-Qpc" secondAttribute="trailing" id="bkF-e4-c1f"/>
                             <constraint firstItem="dkn-pY-AY4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="iiP-xB-CCG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vHj-h6-gca" secondAttribute="bottom" id="oWs-vK-EBa"/>
