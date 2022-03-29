@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate & UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate & UINavigationControllerDelegate & UITextFieldDelegate {
 
     //MARK - MULTIMEDIA OBJECTCS
     @IBOutlet weak var pickerCamera: UIBarButtonItem!
@@ -20,6 +20,8 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate 
     //MARK - TEXTFIELD OBJECTS
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
+    
+    private var meme : Meme
     
 
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
@@ -120,10 +122,12 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate 
     func save () {
         let topTextFieldString : String = topTextField.text!
         let bottomTextFieldString : String = bottomTextField.text!
-        _ = Meme(
+        meme = Meme(
             topText:topTextFieldString,
             bottomText: bottomTextFieldString,
             originalImage: self.memeImage.image!, memedImage: generateMemedImage())
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.memes.append(meme)
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
