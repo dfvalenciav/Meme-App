@@ -21,8 +21,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var topTextField: UITextField!
     @IBOutlet weak var bottomTextField: UITextField!
     
-    private var meme : Meme
-    
 
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.black,
@@ -122,6 +120,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     func save () {
         let topTextFieldString : String = topTextField.text!
         let bottomTextFieldString : String = bottomTextField.text!
+        var meme : Meme
         meme = Meme(
             topText:topTextFieldString,
             bottomText: bottomTextFieldString,

@@ -7,7 +7,10 @@
 
 import UIKit
 
-class TableMemeViewController: UIViewController {
+class TableMemeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+
+    
+    @IBOutlet weak var tableViewOutlet: UITableView!
     
     var memes : [Meme]! {
         let object = UIApplication.shared.delegate
@@ -15,12 +18,36 @@ class TableMemeViewController: UIViewController {
         return appDelegate.memes
     }
     
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableViewOutlet.delegate = self
+        tableViewOutlet.dataSource = self
 
     }
     
+    @IBAction func plusButtonAction(_ sender: Any) {
+        let memeEditorViewController = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
+        present(memeEditorViewController, animated: true, completion: nil)
+        
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.memes.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "memeCell")!
+        let meme = self.memes[(indexPath as NSIndexPath).row]
+        let memeText = "\(meme.topText)...\(meme.bottomText)"
+        
+        cell.textLabel?.text = memeText
+        cell.imageView?.image = meme.memedImage
+        
+        return cell
+        
+    }
 
 
 
