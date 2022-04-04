@@ -27,6 +27,11 @@ class TableMemeViewController: UIViewController, UITableViewDataSource, UITableV
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tableViewOutlet.reloadData()
+    }
+    
     @IBAction func plusButtonAction(_ sender: Any) {
         let memeEditorViewController = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
         present(memeEditorViewController, animated: true, completion: nil)
