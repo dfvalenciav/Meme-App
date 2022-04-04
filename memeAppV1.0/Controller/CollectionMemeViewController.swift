@@ -8,9 +8,13 @@
 import UIKit
 
 class CollectionMemeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-
+        //Outlets
         @IBOutlet weak var collectionViewOutlet: UICollectionView!
-
+        @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
+    //let memeEditorViewController : MemeEditorViewController!
+    
+        //Meme object
         var memes : [Meme]! {
             let object = UIApplication.shared.delegate
             let appDelegate = object as! AppDelegate
@@ -19,8 +23,18 @@ class CollectionMemeViewController: UIViewController, UICollectionViewDelegate, 
 
         override func viewDidLoad() {
             super.viewDidLoad()
+            
+            //Setting delegates
             collectionViewOutlet.delegate = self
             collectionViewOutlet.dataSource = self
+            
+            
+            //flowlayout
+            let space:CGFloat = 3.0
+            let dimension = (view.frame.size.width - (2 * space))/3.0
+            flowLayout.minimumInteritemSpacing = space
+            flowLayout.minimumLineSpacing = space
+            flowLayout.itemSize = CGSize(width: dimension, height: dimension)
         }
     
         override func viewWillAppear(_ animated: Bool) {
@@ -30,7 +44,7 @@ class CollectionMemeViewController: UIViewController, UICollectionViewDelegate, 
         
         @IBAction func plusButtonAction(_ sender: Any) {
             let memeEditorViewController = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
-            present(memeEditorViewController, animated: true, completion: nil)
+            self.navigationController?.pushViewController(memeEditorViewController, animated: true)
         }
         
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
