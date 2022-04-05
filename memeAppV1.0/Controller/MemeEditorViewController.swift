@@ -42,6 +42,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         prepareTextField(textField: topTextField, defaultText: "TOP")
         prepareTextField(textField: bottomTextField, defaultText: "BOTTOM")
         shareButton.isEnabled = false
+        subscribeToKeyboardNotifications()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,9 +52,18 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewWillDisappear(_ animated: Bool) {
 
         super.viewWillDisappear(animated)
-        
+        unsubscribeFromKeyboardNotifications()
     }
     
+    func subscribeToKeyboardNotifications() {
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        }
+        
+    func unsubscribeFromKeyboardNotifications() {
+            NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+            NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        }
     
     @objc func keyboardWillShow(_ notification:Notification) {
         if bottomTextField.isFirstResponder{
@@ -146,9 +156,4 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         toolBarBottom.isHidden = false
         return memedImage
     }
-    
-
-    
 }
-
-
