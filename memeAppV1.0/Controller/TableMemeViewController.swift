@@ -36,7 +36,7 @@ class TableMemeViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBAction func plusButtonAction(_ sender: Any) {
         let memeEditorViewController = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
-        self.navigationController?.pushViewController(memeEditorViewController, animated: true)
+        self.present(memeEditorViewController, animated: true)
         
     }
     
@@ -55,7 +55,7 @@ class TableMemeViewController: UIViewController, UITableViewDataSource, UITableV
         
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let memedetailController = self.storyboard!.instantiateViewController(withIdentifier: "memeDetailViewController") as! memeDetailViewController
+        let memedetailController = self.storyboard!.instantiateViewController(withIdentifier: "memeDetailViewController") as! MemeDetailViewController
         memedetailController.meme = self.memes[(indexPath as NSIndexPath).row]
         self.navigationController!.pushViewController(memedetailController, animated: true)
     }

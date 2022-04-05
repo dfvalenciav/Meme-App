@@ -7,7 +7,7 @@
 
 import UIKit
 
-class memeCollectionViewCell: UICollectionViewCell {
+class MemeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var memeImageView: UIImageView!
     

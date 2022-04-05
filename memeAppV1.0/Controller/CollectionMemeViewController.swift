@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CollectionMemeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class CollectionMemeViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
         //Outlets
         @IBOutlet weak var collectionViewOutlet: UICollectionView!
         @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
@@ -44,7 +44,7 @@ class CollectionMemeViewController: UIViewController, UICollectionViewDelegate, 
         
         @IBAction func plusButtonAction(_ sender: Any) {
             let memeEditorViewController = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
-            self.navigationController?.pushViewController(memeEditorViewController, animated: true)
+            self.present(memeEditorViewController, animated: true)
         }
         
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -52,15 +52,42 @@ class CollectionMemeViewController: UIViewController, UICollectionViewDelegate, 
         }
         
         func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memeCell", for: indexPath) as? memeCollectionViewCell
+           let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "memeCell", for: indexPath) as? MemeCollectionViewCell
             let meme = self.memes[(indexPath as NSIndexPath).row]
             cell!.memeImageView.image = meme.memedImage
             return cell!
         }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let memedetailController = self.storyboard!.instantiateViewController(withIdentifier: "memeDetailViewController") as! memeDetailViewController
+        let memedetailController = self.storyboard!.instantiateViewController(withIdentifier: "memeDetailViewController") as! MemeDetailViewController
         memedetailController.meme = self.memes[(indexPath as NSIndexPath).row]
         self.navigationController!.pushViewController(memedetailController, animated: true)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let space:CGFloat = 3.0
+        let dimension = (view.frame.size.width - (2 * space)) / 3.0
+        return CGSize(width: dimension, height: dimension)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 3
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 3
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+
+      if collectionView.numberOfItems(inSection: section) == 1 {
+
+           let flowLayout = collectionViewLayout as! UICollectionViewFlowLayout
+
+          return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: collectionView.frame.width - flowLayout.itemSize.width)
+
+      }
+
+      return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+
+  }
 }
