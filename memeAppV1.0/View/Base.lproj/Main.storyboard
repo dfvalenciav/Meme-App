@@ -73,6 +73,35 @@
             </objects>
             <point key="canvasLocation" x="756.52173913043487" y="398.4375"/>
         </scene>
+        <!--Meme Detail View Controller-->
+        <scene sceneID="ArY-ut-WV3">
+            <objects>
+                <viewController storyboardIdentifier="memeDetailViewController" id="ZaP-LR-gog" customClass="memeDetailViewController" customModule="memeAppV1_0" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uje-Ku-BZs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bdq-mM-8Nh">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="sYf-U5-emE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sYf-U5-emE" firstAttribute="trailing" secondItem="bdq-mM-8Nh" secondAttribute="trailing" id="Yb2-Fo-NDW"/>
+                            <constraint firstItem="bdq-mM-8Nh" firstAttribute="top" secondItem="sYf-U5-emE" secondAttribute="top" id="bZf-TK-8wd"/>
+                            <constraint firstItem="sYf-U5-emE" firstAttribute="bottom" secondItem="bdq-mM-8Nh" secondAttribute="bottom" id="cQU-bH-mOP"/>
+                            <constraint firstItem="bdq-mM-8Nh" firstAttribute="leading" secondItem="sYf-U5-emE" secondAttribute="leading" id="mft-NB-6u2"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="memeImageDetail" destination="bdq-mM-8Nh" id="hgp-p5-EeU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3FY-dt-09u" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2094" y="403"/>
+        </scene>
         <!--Sent Images-->
         <scene sceneID="i1F-BZ-eyl">
             <objects>
@@ -242,13 +271,13 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dkn-pY-AY4">
-                                <rect key="frame" x="193" y="108" width="28" height="18.5"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="TOP" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="dkn-pY-AY4">
+                                <rect key="frame" x="20" y="96" width="374" height="18.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wkt-bw-zZj">
-                                <rect key="frame" x="177" y="779.5" width="60" height="18.5"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="BOTTOM" textAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="Wkt-bw-zZj">
+                                <rect key="frame" x="20" y="791.5" width="374" height="18.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
@@ -256,12 +285,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="dkn-pY-AY4" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="2Th-Nw-HaY"/>
                             <constraint firstItem="vHj-h6-gca" firstAttribute="top" secondItem="kyI-0J-Qpc" secondAttribute="bottom" id="5N9-lT-Aw3"/>
                             <constraint firstItem="kyI-0J-Qpc" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6mM-ok-Uq4"/>
                             <constraint firstItem="Wkt-bw-zZj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7rv-Om-9MM"/>
                             <constraint firstItem="kyI-0J-Qpc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Aah-Yj-JoA"/>
-                            <constraint firstItem="vHj-h6-gca" firstAttribute="top" secondItem="Wkt-bw-zZj" secondAttribute="bottom" constant="20" id="E52-PI-p82"/>
-                            <constraint firstItem="dkn-pY-AY4" firstAttribute="top" secondItem="k83-0S-XGV" secondAttribute="bottom" constant="20" id="Fze-K0-5rW"/>
+                            <constraint firstItem="Wkt-bw-zZj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="BZH-M1-NjC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Wkt-bw-zZj" secondAttribute="trailing" constant="20" id="CGW-v1-Rc0"/>
+                            <constraint firstItem="vHj-h6-gca" firstAttribute="top" secondItem="Wkt-bw-zZj" secondAttribute="bottom" constant="8" id="E52-PI-p82"/>
+                            <constraint firstItem="dkn-pY-AY4" firstAttribute="top" secondItem="k83-0S-XGV" secondAttribute="bottom" constant="8" id="Fze-K0-5rW"/>
                             <constraint firstItem="k83-0S-XGV" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="M0I-lp-d9Y"/>
                             <constraint firstItem="k83-0S-XGV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="O5M-vQ-4Ib"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kyI-0J-Qpc" secondAttribute="trailing" id="XgZ-zg-rl2"/>
@@ -270,6 +302,7 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="vHj-h6-gca" secondAttribute="bottom" id="oWs-vK-EBa"/>
                             <constraint firstItem="k83-0S-XGV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qHh-T9-Fa7"/>
                             <constraint firstItem="vHj-h6-gca" firstAttribute="leading" secondItem="kyI-0J-Qpc" secondAttribute="leading" id="xav-wp-kL8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dkn-pY-AY4" secondAttribute="trailing" constant="20" id="xb9-iQ-hUS"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Vcn-dy-luJ"/>
@@ -286,7 +319,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2104" y="10"/>
+            <point key="canvasLocation" x="2087" y="-395"/>
         </scene>
     </scenes>
     <resources>

@@ -12,6 +12,8 @@ class TableMemeViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBOutlet weak var tableViewOutlet: UITableView!
     
+    
+    
     var memes : [Meme]! {
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
@@ -34,7 +36,7 @@ class TableMemeViewController: UIViewController, UITableViewDataSource, UITableV
     
     @IBAction func plusButtonAction(_ sender: Any) {
         let memeEditorViewController = self.storyboard?.instantiateViewController(withIdentifier: "MemeEditorViewController") as! MemeEditorViewController
-        present(memeEditorViewController, animated: true, completion: nil)
+        self.navigationController?.pushViewController(memeEditorViewController, animated: true)
         
     }
     
@@ -52,7 +54,11 @@ class TableMemeViewController: UIViewController, UITableViewDataSource, UITableV
         return cell
         
     }
-
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let memedetailController = self.storyboard!.instantiateViewController(withIdentifier: "memeDetailViewController") as! memeDetailViewController
+        memedetailController.meme = self.memes[(indexPath as NSIndexPath).row]
+        self.navigationController!.pushViewController(memedetailController, animated: true)
+    }
 
 
 }
